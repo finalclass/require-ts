@@ -15,6 +15,7 @@ var RequireTS = (function () {
     RequireTS.prototype.register = function () {
         var _this = this;
         this.files.readAll();
+        console.log(this.files.findModifiedTSFiles());
         this.compiler.compileFiles(this.files.findModifiedTSFiles());
 
         require.extensions['.ts'] = function (module) {

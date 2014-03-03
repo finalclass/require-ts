@@ -21,6 +21,7 @@ class RequireTS {
 
   public register() : void {
     this.files.readAll();
+    console.log(this.files.findModifiedTSFiles());
     this.compiler.compileFiles(this.files.findModifiedTSFiles());
 
     require.extensions['.ts'] = (module) => this.onTSExtensionRequire(module);

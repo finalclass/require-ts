@@ -20,8 +20,15 @@ class FilesManager {
 
   public findModifiedTSFiles() : string[] {
     return Object.keys(this.tsStatsHash)
-      .filter((filePath:string) => this.isModified(this.tsStatsHash[filePath]))
+      .filter((filePath:string) => {
+        return this.isModified(this.tsStatsHash[filePath]) &&
+          !(this.config.excludeDeclarationFiles && this.isDeclarationFile(filePath))
+      })
       .map((filePath:string) => this.tsStatsHash[filePath].filePath);
+  }
+
+  private isDeclarationFile(filePath:string) : boolean {
+    return filePath.indexOf('.d.ts') === filePath.length - 5;
   }
 
   private toStatHash(stats:ffs.FinalStats[]) : HashTable<ffs.FinalStats> {

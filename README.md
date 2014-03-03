@@ -26,7 +26,8 @@ npm install require-ts
 ```js
 require('require-ts')({
   sourcePath: 'path/to/typescript/files/directory',
-  buildPath: 'destination/folder/for/compiled/files'
+  buildPath: 'destination/folder/for/compiled/files',
+  excludeDeclarationFiles: true //default is true
 });
 
 //then you can:
@@ -34,6 +35,8 @@ require('file.ts');
 ```
 
 Compiler will compile all **modified** files in sourcePath directory and place their compiled versions inside the buildPath directory. Directory structury should be preserved. 
+
+When the excludeDeclarationFiles flag is set to false then compiler will try to compile also files with .d.ts extension which usually is not what we want.
 
 ### __dirname
 

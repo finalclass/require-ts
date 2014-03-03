@@ -14,10 +14,14 @@ var FilesManager = (function () {
     FilesManager.prototype.findModifiedTSFiles = function () {
         var _this = this;
         return Object.keys(this.tsStatsHash).filter(function (filePath) {
-            return _this.isModified(_this.tsStatsHash[filePath]);
+            return _this.isModified(_this.tsStatsHash[filePath]) && !(_this.config.excludeDeclarationFiles && _this.isDeclarationFile(filePath));
         }).map(function (filePath) {
             return _this.tsStatsHash[filePath].filePath;
         });
+    };
+
+    FilesManager.prototype.isDeclarationFile = function (filePath) {
+        return filePath.indexOf('.d.ts') === filePath.length - 5;
     };
 
     FilesManager.prototype.toStatHash = function (stats) {

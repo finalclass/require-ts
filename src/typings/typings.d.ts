@@ -5,6 +5,7 @@
 interface IRTSOptions {
   sourcePath?:string;
   buildPath?:string;
+  excludeDeclarationFiles?:boolean;
 }
 
 interface HashTable<T> {
@@ -14,5 +15,5 @@ interface HashTable<T> {
 interface ITSCBuildOptions {
   module?:string;
   outDir?:string;
-  target?:string
+  target?:string;
 }
