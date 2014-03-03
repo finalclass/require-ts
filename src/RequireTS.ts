@@ -5,7 +5,7 @@ import FilesManager = require('./FilesManager');
 import Compiler = require('./Compiler');
 import ffs = require('final-fs');
 import path = require('path');
-var vm = require('vm');
+import vm = require('vm');
 
 class RequireTS {
 
@@ -34,6 +34,7 @@ class RequireTS {
     for (var k in global) {
       sandbox[k] = global[k];
     }
+
     (<any>sandbox).require = module.require.bind(module);
     (<any>sandbox).exports = module.exports;
     (<any>sandbox).__filename = jsname;
