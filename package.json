@@ -1,8 +1,13 @@
 {
   "name": "require-ts",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "require() typescript files.",
-  "keywords": ["typescript", "require", "compiler", "autoloader"],
+  "keywords": [
+    "typescript",
+    "require",
+    "compiler",
+    "autoloader"
+  ],
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
