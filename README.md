@@ -1,4 +1,4 @@
-# RequireTS
+# __require('.ts');__
 
 **RequireTS** is an nodejs module which allows you to `require()` typescript files.
 
@@ -37,7 +37,7 @@ Compiler will compile all **modified** files in sourcePath directory and place t
 
 ### __dirname
 
-__dirname will point to typescript file
+__dirname will point to typescript file location
 
 ## License ISC
 
