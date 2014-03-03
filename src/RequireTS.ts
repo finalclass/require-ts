@@ -22,7 +22,6 @@ class RequireTS {
   public register() : void {
     this.files.readAll();
     this.compiler.compileFiles(this.files.findModifiedTSFiles());
-
     require.extensions['.ts'] = (module) => this.onTSExtensionRequire(module);
   }
 
@@ -41,9 +40,8 @@ class RequireTS {
     (<any>sandbox).__dirname = path.dirname(module.filename);
     (<any>sandbox).module = module;
     (<any>sandbox).global = (<any>sandbox);
-    // (<any>sandbox).root = root;
 
-    return vm.runInNewContext(content, (<any>sandbox), { filename: jsname });
+    return vm.runInNewContext(content, sandbox, jsname);
   }
 
 }
