@@ -15,9 +15,7 @@ var RequireTS = (function () {
     RequireTS.prototype.register = function () {
         var _this = this;
         this.files.readAll();
-        console.log(this.files.findModifiedTSFiles());
         this.compiler.compileFiles(this.files.findModifiedTSFiles());
-
         require.extensions['.ts'] = function (module) {
             return _this.onTSExtensionRequire(module);
         };
@@ -31,6 +29,7 @@ var RequireTS = (function () {
         for (var k in global) {
             sandbox[k] = global[k];
         }
+
         sandbox.require = module.require.bind(module);
         sandbox.exports = module.exports;
         sandbox.__filename = jsname;
@@ -38,8 +37,7 @@ var RequireTS = (function () {
         sandbox.module = module;
         sandbox.global = sandbox;
 
-        // (<any>sandbox).root = root;
-        return vm.runInNewContext(content, sandbox, { filename: jsname });
+        return vm.runInNewContext(content, sandbox, jsname);
     };
     return RequireTS;
 })();
