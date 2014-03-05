@@ -31,7 +31,6 @@ var Compiler = (function () {
         var options = Object.create(null);
 
         options.outDir = path.join(this.config.buildPath, this.fixOutDir(files));
-        console.log(options.outDir);
         return this.getBuildOptionsString(options) + '\n' + files.join('\n');
     };
 
